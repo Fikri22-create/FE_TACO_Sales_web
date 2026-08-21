@@ -12,7 +12,6 @@ import {
   FaInfoCircle,
   FaMapMarkerAlt,
   FaSearch,
-  FaUserCheck,
 } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import Modal from '../../components/ui/Modal'
@@ -171,14 +170,14 @@ const CompetitorIntelligencePage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl p-5 shadow-sm border border-gray-100 dark:border-gray-800 mb-5">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-primary-50 rounded-2xl dark:bg-primary-500/10">
               <FaChartLine className="w-8 h-8 text-primary-600 dark:text-primary-400" />
             </div>
             <div>
-              <h1 className="text-3xl lg:text-4xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h1 className="text-base lg:text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 Intelijen Kompetitor
               </h1>
               <p className="text-gray-500 dark:text-gray-400 text-base max-w-2xl">
@@ -215,9 +214,9 @@ const CompetitorIntelligencePage = () => {
         </div>
       </div>
 
-      <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
         <StaggerItem>
-          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-4 shadow-sm hover:shadow-md transition-all duration-300 group">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -226,7 +225,7 @@ const CompetitorIntelligencePage = () => {
                   </div>
                   <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Sinyal</span>
                 </div>
-                <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                   <CountUp value={totalSignals} />
                 </h3>
                 <div className="flex items-center gap-2 mt-4">
@@ -242,7 +241,7 @@ const CompetitorIntelligencePage = () => {
         </StaggerItem>
 
         <StaggerItem>
-          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-4 shadow-sm hover:shadow-md transition-all duration-300 group">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -251,7 +250,7 @@ const CompetitorIntelligencePage = () => {
                   </div>
                   <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kompetitor Teraktif</span>
                 </div>
-                <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                   {dashboardSummary.topCompetitor}
                 </h3>
                 <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">
@@ -263,7 +262,7 @@ const CompetitorIntelligencePage = () => {
         </StaggerItem>
 
         <StaggerItem>
-          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-4 shadow-sm hover:shadow-md transition-all duration-300 group">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
@@ -272,7 +271,7 @@ const CompetitorIntelligencePage = () => {
                   </div>
                   <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sinyal Dominan</span>
                 </div>
-                <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                   {dashboardSummary.dominantSignalType}
                 </h3>
                 <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">
@@ -284,10 +283,10 @@ const CompetitorIntelligencePage = () => {
         </StaggerItem>
       </Stagger>
 
-      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-8 shadow-sm mb-8">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-6">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm mb-5">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-4">
           <div>
-            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">Filter Brand</h2>
+            <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">Filter Brand</h2>
             <p className="text-base text-gray-500 dark:text-gray-400">Atur visibilitas brand pada grafik</p>
           </div>
           <span className="text-sm font-medium px-4 py-2 bg-gray-50 dark:bg-gray-800 rounded-full text-gray-600 dark:text-gray-400">
@@ -317,11 +316,11 @@ const CompetitorIntelligencePage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
             <div>
-              <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 Tren Harga Kompetitor
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">Perkembangan harga dalam 15 hari terakhir</p>
@@ -361,10 +360,10 @@ const CompetitorIntelligencePage = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
             <div>
-              <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 Aktivitas Brand per Minggu
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">Frekuensi penyebutan dalam laporan sales</p>
@@ -378,10 +377,10 @@ const CompetitorIntelligencePage = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-8 shadow-sm mb-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm mb-5">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
           <div>
-            <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
               Sinyal per Tipe Outlet
             </h2>
             <p className="text-base text-gray-500 dark:text-gray-400">Distribusi laporan berdasarkan kategori outlet</p>
@@ -391,15 +390,15 @@ const CompetitorIntelligencePage = () => {
           </span>
         </div>
 
-        <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {outletTypeBreakdown.map((item) => (
             <StaggerItem
               key={item.type}
-              className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+              className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-bold text-gray-900 dark:text-white">{item.type}</h3>
-                <span className="text-2xl font-display font-bold text-gray-900 dark:text-white">
+                <span className="text-base font-display font-bold text-gray-900 dark:text-white">
                   <CountUp value={item.count} />
                 </span>
               </div>
@@ -424,10 +423,10 @@ const CompetitorIntelligencePage = () => {
       </div>
 
       <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
-        <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+        <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
             <div>
-              <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 Laporan Sinyal Kompetitor
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">
@@ -467,25 +466,22 @@ const CompetitorIntelligencePage = () => {
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-gray-800/60">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Outlet
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Tanggal
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Brand
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Tipe Sinyal
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Wilayah
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Sales
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Aksi
                 </th>
               </tr>
@@ -513,7 +509,7 @@ const CompetitorIntelligencePage = () => {
                     transition={{ duration: 0.35, ease: 'easeOut', delay: index * 0.05 }}
                     className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                   >
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-2.5">
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-gray-100 rounded-lg dark:bg-gray-800">
                           <FaMapMarkerAlt className="w-4 h-4 text-gray-500 dark:text-gray-400" />
@@ -524,24 +520,21 @@ const CompetitorIntelligencePage = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-2.5">
                       <div className="text-sm text-gray-900 dark:text-white">{formatTableDate(report.date)}</div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Dilaporkan</div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-2.5">
                       <div className="flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: getBrandColor(report.brand) }} />
                         <span className="text-sm text-gray-900 dark:text-white">{report.brand}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{getSignalBadge(report.signalType)}</td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-2.5">{getSignalBadge(report.signalType)}</td>
+                    <td className="px-4 py-2.5">
                       <span className="text-sm text-gray-900 dark:text-white">{report.region}</span>
                     </td>
-                    <td className="px-6 py-4">
-                      <span className="text-sm text-gray-900 dark:text-white">{report.salesName}</span>
-                    </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-2.5">
                       <button
                         onClick={() => setDetailReport(report)}
                         className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-primary-50 text-primary-700 dark:bg-primary-500/15 dark:text-primary-300 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-500/25 transition-colors"
@@ -557,7 +550,7 @@ const CompetitorIntelligencePage = () => {
           </table>
         </div>
 
-        <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60">
+        <div className="px-4 py-2.5 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/60">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500 dark:text-gray-400">
             <div>
               Menampilkan <span className="font-medium text-gray-900 dark:text-white">{startIndex}</span>–
@@ -616,13 +609,6 @@ const CompetitorIntelligencePage = () => {
                 <div className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <span className="w-3 h-3 rounded-full" style={{ backgroundColor: getBrandColor(detailReport.brand) }} />
                   <p className="font-medium text-gray-900 dark:text-white">{detailReport.brand}</p>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1.5">Nama Sales</p>
-                <div className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <FaUserCheck className="w-4 h-4 text-primary-500 shrink-0" />
-                  <p className="font-medium text-gray-900 dark:text-white">{detailReport.salesName}</p>
                 </div>
               </div>
               <div>

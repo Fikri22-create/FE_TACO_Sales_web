@@ -10,7 +10,7 @@ const AVATAR_COLORS = ['ff4c00', '953d1f', 'dac690', '3b82f6', '10b981', 'f59e0b
 const DEFAULT_PREFS = { dateFormat: 'DD/MM/YYYY', language: 'id' }
 
 const avatarUrl = (name, background) =>
-  `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Supervisor')}&background=${background}&color=fff`
+  `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Steward')}&background=${background}&color=fff`
 
 const readPrefs = () => {
   try {
@@ -42,7 +42,7 @@ const ProfilePage = () => {
   const [email, setEmail] = useState(user?.email || '')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [selectedAvatar, setSelectedAvatar] = useState(user?.avatar || avatarUrl(user?.name || 'Supervisor', 'ff4c00'))
+  const [selectedAvatar, setSelectedAvatar] = useState(user?.avatar || avatarUrl(user?.name || 'Steward', 'ff4c00'))
   const [prefs, setPrefs] = useState(readPrefs)
   const [formError, setFormError] = useState('')
   const [prevUserStr, setPrevUserStr] = useState(JSON.stringify(user))
@@ -51,7 +51,7 @@ const ProfilePage = () => {
     if (user) {
       setName(user.name || '')
       setEmail(user.email || '')
-      setSelectedAvatar(user.avatar || avatarUrl(user.name || 'Supervisor', 'ff4c00'))
+      setSelectedAvatar(user.avatar || avatarUrl(user.name || 'Steward', 'ff4c00'))
     }
     setPrevUserStr(JSON.stringify(user))
   }
@@ -123,7 +123,7 @@ const ProfilePage = () => {
     toast.success('Profil berhasil diperbarui')
   }
 
-  const displayName = name || user?.name || 'Supervisor'
+  const displayName = name || user?.name || 'Steward'
 
   return (
     <div className="space-y-6">
@@ -133,7 +133,7 @@ const ProfilePage = () => {
         </div>
         <div>
           <h1 className="text-2xl font-display font-semibold text-gray-900 dark:text-white">
-            Profil & Pengaturan
+            Profil Akun
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
             Kelola informasi akun, foto profil, dan preferensi tampilan Anda.

@@ -4,14 +4,16 @@ import { AnimatePresence, motion } from 'framer-motion'
 import {
   FaBars,
   FaCaretDown,
-  FaChartBar,
-  FaChartLine,
   FaChevronLeft,
   FaChevronRight,
   FaSignOutAlt,
   FaUserCircle,
-  FaUsers,
-  FaUserTie,
+  FaStore,
+  FaBook,
+  FaExclamationTriangle,
+  FaTags,
+  FaCog,
+  FaDatabase
 } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext'
 import { ThemeProvider } from '../contexts/ThemeContext'
@@ -19,14 +21,18 @@ import { ToastProvider } from '../components/ui/Toast'
 import Modal from '../components/ui/Modal'
 import { Stagger, StaggerItem } from '../components/ui/Stagger'
 import NotificationDropdown from '../components/ui/NotificationDropdown'
-import { supervisorNotifications } from '../data/mockData'
+import { dataStewardNotifications } from '../data/mockData'
+
 
 const avatarUrl = (name, background) =>
-  `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Supervisor')}&background=${background}&color=fff`
+  `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'Data Steward')}&background=${background}&color=fff`
 
 const navItems = [
-  { to: '/supervisor/kinerja-tim', label: 'Kinerja Tim', icon: FaUsers },
-  { to: '/supervisor/kompetitor', label: 'Intelijen Kompetitor', icon: FaChartBar },
+  { to: '/data-steward/outlet-baru', label: 'Antrean Outlet Baru', icon: FaStore },
+  { to: '/data-steward/lexicon', label: 'Manajemen Lexicon', icon: FaBook },
+  { to: '/data-steward/unresolved', label: 'Antrean Unresolved', icon: FaExclamationTriangle },
+  { to: '/data-steward/brand-kompetitor', label: 'Brand Kompetitor', icon: FaTags },
+  { to: '/data-steward/pengaturan', label: 'Pengaturan Sistem', icon: FaCog },
 ]
 
 const LayoutShell = () => {
@@ -91,11 +97,11 @@ const LayoutShell = () => {
             <>
               <div className="flex min-w-0 items-center gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-500 shadow-sm">
-                  <FaUserTie className="h-5 w-5 text-white" />
+                  <FaDatabase className="h-5 w-5 text-white" />
                 </div>
                 <div className="min-w-0">
                   <h1 className="font-display text-lg font-bold tracking-tight text-gray-900 dark:text-white">TACO</h1>
-                  <p className="truncate text-[11px] text-gray-500 dark:text-gray-400">Sales Intelligence</p>
+                  <p className="truncate text-[11px] text-gray-500 dark:text-gray-400">Data Steward</p>
                 </div>
               </div>
               <button
@@ -110,7 +116,7 @@ const LayoutShell = () => {
           ) : (
             <>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500 shadow-sm">
-                <FaUserTie className="h-5 w-5 text-white" />
+                <FaDatabase className="h-5 w-5 text-white" />
               </div>
               <button
                 type="button"
@@ -127,7 +133,7 @@ const LayoutShell = () => {
         <nav className="flex-1 overflow-y-auto px-3 py-4">
           {showLabels && (
             <p className="mb-2 px-2 text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
-              Menu
+              Menu Utama
             </p>
           )}
           <Stagger className="space-y-1">
@@ -153,7 +159,7 @@ const LayoutShell = () => {
                     <>
                       {isActive && (
                         <motion.div
-                          layoutId="supervisor-nav-indicator"
+                          layoutId="steward-nav-indicator"
                           className="absolute inset-0 rounded-lg border-l-4 border-primary-500 bg-primary-50 dark:bg-primary-500/10"
                           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                         />
@@ -184,17 +190,14 @@ const LayoutShell = () => {
             </button>
             <div className="min-w-0">
               <h1 className="truncate font-display text-base font-semibold text-gray-900 dark:text-white md:text-lg">
-                Sales Intelligence Dashboard
+                Data Steward Dashboard
               </h1>
-              <div className="mt-0.5 flex items-center gap-2">
-                
-              </div>
             </div>
           </div>
 
           <div className="flex shrink-0 items-center gap-1 md:gap-2">
             <NotificationDropdown
-              initialData={supervisorNotifications}
+              initialData={dataStewardNotifications}
               isOpen={openMenu === 'notifications'}
               onToggle={() => setOpenMenu(openMenu === 'notifications' ? null : 'notifications')}
               onClose={() => setOpenMenu(null)}
@@ -211,16 +214,16 @@ const LayoutShell = () => {
                 className="flex items-center gap-2 rounded-lg p-1.5 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <img
-                  src={user?.avatar || avatarUrl(user?.name || 'Supervisor', 'ff4c00')}
-                  alt={user?.name || 'Supervisor'}
+                  src={user?.avatar || avatarUrl(user?.name || 'Data Steward', '953d1f')}
+                  alt={user?.name || 'Data Steward'}
                   className="h-9 w-9 shrink-0 rounded-xl object-cover"
                 />
                 <span className="hidden min-w-0 text-left lg:block">
                   <span className="block truncate text-sm font-medium text-gray-900 dark:text-white">
-                    {user?.name || 'Supervisor'}
+                    {user?.name || 'Data Steward'}
                   </span>
                   <span className="block truncate text-xs capitalize text-gray-500 dark:text-gray-400">
-                    {user?.role || 'supervisor'}
+                    {user?.role || 'data-steward'}
                   </span>
                 </span>
                 <FaCaretDown
@@ -240,7 +243,7 @@ const LayoutShell = () => {
                   >
                     <div className="border-b border-gray-100 px-3 py-3 dark:border-gray-800">
                       <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">
-                        {user?.name || 'Supervisor'}
+                        {user?.name || 'Data Steward'}
                       </p>
                       <p className="truncate text-xs text-gray-500 dark:text-gray-400">
                         {user?.email || 'email belum diatur'}
@@ -251,7 +254,7 @@ const LayoutShell = () => {
                         type="button"
                         onClick={() => {
                           setOpenMenu(null)
-                          navigate('/supervisor/profil')
+                          navigate('/data-steward/profil')
                         }}
                         className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
                       >
@@ -295,14 +298,12 @@ const LayoutShell = () => {
         <footer className="mt-auto border-t border-gray-200 bg-white px-4 py-4 dark:border-gray-800 dark:bg-gray-900 md:px-6">
           <div className="flex flex-col items-center justify-between gap-2 text-sm text-gray-500 dark:text-gray-400 md:flex-row">
             <div className="flex items-center gap-3">
-              <span>© {new Date().getFullYear()} TACO Sales Intelligence</span>
+              <span>© {new Date().getFullYear()} TACO Data Steward Platform</span>
               <span className="hidden md:inline">•</span>
               <span className="rounded bg-gray-100 px-2 py-0.5 text-xs dark:bg-gray-800">v1.0.0</span>
             </div>
             <div className="flex items-center gap-3">
-              <span>Tim: {user?.teamId || 'Team-001'}</span>
-              <span className="hidden md:inline">•</span>
-              <span>Sinkronisasi: Baru saja</span>
+              <span>Status: <span className="text-success-500">Connected</span></span>
             </div>
           </div>
         </footer>
@@ -328,7 +329,7 @@ const LayoutShell = () => {
   )
 }
 
-const SupervisorLayout = () => (
+const DataStewardLayout = () => (
   <ThemeProvider>
     <ToastProvider>
       <LayoutShell />
@@ -336,4 +337,4 @@ const SupervisorLayout = () => (
   </ThemeProvider>
 )
 
-export default SupervisorLayout
+export default DataStewardLayout

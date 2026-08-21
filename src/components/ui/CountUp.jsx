@@ -12,7 +12,7 @@ const CountUp = ({ value, duration = 1200, format = defaultFormat, className = '
     if (!inView) return
     const controls = animate(0, value, {
       duration: duration / 1000,
-      ease: 'easeOut',
+      ease: [0.16, 1, 0.3, 1],
       onUpdate: (latest) => setDisplay(latest),
     })
     return () => controls.stop()

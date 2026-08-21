@@ -8,6 +8,15 @@ import CompetitorIntelligencePage from './pages/supervisor/CompetitorIntelligenc
 import ProfilePage from './pages/supervisor/ProfilePage';
 import ComingSoonPage from './pages/misc/ComingSoonPage';
 
+
+import DataStewardLayout from './layouts/DataStewardLayout';
+import NewOutletQueuePage from './pages/data-steward/NewOutletQueuePage';
+import LexiconManagementPage from './pages/data-steward/LexiconManagementPage';
+import UnresolvedQueuePage from './pages/data-steward/UnresolvedQueuePage';
+import CompetitorBrandPage from './pages/data-steward/CompetitorBrandPage';
+import SettingsPage from './pages/data-steward/SettingsPage';
+import DataStewardProfilePage from './pages/data-steward/ProfilePage';
+
 function App() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased text-gray-900">
@@ -23,6 +32,19 @@ function App() {
                 <Route path="/supervisor/kinerja-tim" element={<TeamPerformancePage />} />
                 <Route path="/supervisor/kompetitor" element={<CompetitorIntelligencePage />} />
                 <Route path="/supervisor/profil" element={<ProfilePage />} />
+              </Route>
+            </Route>
+            
+            
+            <Route element={<ProtectedRoute allowedRoles={['data-steward']} />}>
+              <Route element={<DataStewardLayout />}>
+                <Route path="/data-steward" element={<Navigate to="/data-steward/outlet-baru" replace />} />
+                <Route path="/data-steward/outlet-baru" element={<NewOutletQueuePage />} />
+                <Route path="/data-steward/lexicon" element={<LexiconManagementPage />} />
+                <Route path="/data-steward/unresolved" element={<UnresolvedQueuePage />} />
+                <Route path="/data-steward/brand-kompetitor" element={<CompetitorBrandPage />} />
+                <Route path="/data-steward/pengaturan" element={<SettingsPage />} />
+                <Route path="/data-steward/profil" element={<DataStewardProfilePage />} />
               </Route>
             </Route>
             

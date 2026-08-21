@@ -11,6 +11,14 @@ const MOCK_USER = {
     avatar: 'https://ui-avatars.com/api/?name=Ahmad+Setiawan&background=0077ff&color=fff',
     teamId: 'team_001',
   },
+  dataSteward: {
+    email: 'steward@demo.com',
+    password: 'password123',
+    name: 'Budi Santoso',
+    role: 'data-steward',
+    avatar: 'https://ui-avatars.com/api/?name=Budi+Santoso&background=953d1f&color=fff',
+    teamId: 'steward_001',
+  },
 };
 
 export const AuthProvider = ({ children }) => { 
@@ -37,8 +45,13 @@ export const AuthProvider = ({ children }) => {
     
     try {
       let authenticatedUser = null;
-      if (email === MOCK_USER.supervisor.email && password === MOCK_USER.supervisor.password) {
+      const cleanEmail = email.trim();
+      const cleanPassword = password.trim();
+
+      if (cleanEmail === MOCK_USER.supervisor.email && cleanPassword === MOCK_USER.supervisor.password) {
         authenticatedUser = { ...MOCK_USER.supervisor };
+      } else if (cleanEmail === MOCK_USER.dataSteward.email && cleanPassword === MOCK_USER.dataSteward.password) {
+        authenticatedUser = { ...MOCK_USER.dataSteward };
       } else {
         const savedUserRaw = localStorage.getItem('taco_user');
         if (savedUserRaw) {
@@ -53,8 +66,8 @@ export const AuthProvider = ({ children }) => {
             ) {
               authenticatedUser = { ...savedUser };
             }
-          } catch {
-            // abaikan data pengguna yang rusak
+          } catch (e) {
+            console.error(e)
           }
         }
       }

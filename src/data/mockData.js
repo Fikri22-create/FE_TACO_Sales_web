@@ -363,3 +363,19 @@ export const getPeriodData = (period) => {
     summary: scaledSummary,
   };
 };
+
+export const supervisorNotifications = [
+  { id: 'SN1', text: '2 anggota tim belum submit laporan hari ini', time: '10 menit yang lalu', unread: true },
+  { id: 'SN2', text: 'Intelijen kompetitor: Brand A menurunkan harga 10%', time: '1 jam yang lalu', unread: true },
+  { id: 'SN3', text: 'Laporan pencapaian target mingguan tersedia', time: '2 jam yang lalu', unread: true },
+  { id: 'SN4', text: 'Outlet Toko Jaya telah disetujui', time: 'Kemarin', unread: false },
+  { id: 'SN5', text: 'Kinerja tim turun 5% minggu ini', time: '2 hari yang lalu', unread: false },
+];
+
+export const dataStewardNotifications = [
+  { id: 'DSN1', text: 'Laporan outlet baru perlu direview', time: '5 menit yang lalu', unread: true },
+  { id: 'DSN2', text: 'Terdapat 15 data anomali pada lexicon', time: '30 menit yang lalu', unread: true },
+  { id: 'DSN3', text: 'Antrean unresolved mencapai batas maksimal', time: '1 jam yang lalu', unread: true },
+  { id: 'DSN4', text: 'Sinkronisasi pipeline harian berhasil', time: '2 jam yang lalu', unread: false },
+  { id: 'DSN5', text: 'Perubahan threshold kata aktif', time: 'Kemarin', unread: false },
+];

@@ -283,16 +283,16 @@ const TeamPerformancePage = () => {
 
   return (
     <div className="space-y-6">
-      {/* Hero/Greeting Section */}
-      <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+      
+      <div className="bg-white dark:bg-gray-900 rounded-3xl p-5 shadow-sm border border-gray-100 dark:border-gray-800 mb-5">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-2">
               <div className="p-4 bg-primary-50 dark:bg-primary-500/10 rounded-2xl">
                 <FaUsers className="w-8 h-8 text-primary-600 dark:text-primary-400" />
               </div>
               <div>
-                <h1 className="text-3xl lg:text-4xl font-display font-bold text-gray-900 dark:text-white">
+                <h1 className="text-base lg:text-base font-display font-bold text-gray-900 dark:text-white">
                   Kinerja Tim
                 </h1>
                 <p className="text-gray-500 dark:text-gray-400 mt-2 text-base">
@@ -323,9 +323,9 @@ const TeamPerformancePage = () => {
         </div>
       </div>
 
-      {/* Stat Cards Section */}
-      <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+      
+      <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
@@ -334,7 +334,7 @@ const TeamPerformancePage = () => {
                 </div>
                 <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Anggota</span>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={summary.totalTeamMembers} />
               </h3>
               <div className="flex items-center gap-2 mt-4">
@@ -347,7 +347,7 @@ const TeamPerformancePage = () => {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
@@ -356,7 +356,7 @@ const TeamPerformancePage = () => {
                 </div>
                 <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Skor Kualitas</span>
               </div>
-              <h3 className={`text-3xl font-display font-bold mb-2 ${getScoreColor(summary.avgQualityScore)}`}>
+              <h3 className={`text-base font-display font-bold mb-2 ${getScoreColor(summary.avgQualityScore)}`}>
                 <CountUp
                   value={summary.avgQualityScore}
                   format={(n) => n.toFixed(2)}
@@ -390,7 +390,7 @@ const TeamPerformancePage = () => {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
@@ -399,7 +399,7 @@ const TeamPerformancePage = () => {
                 </div>
                 <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Kunjungan</span>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={summary.totalVisits} />
               </h3>
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">
@@ -409,7 +409,7 @@ const TeamPerformancePage = () => {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
@@ -418,7 +418,7 @@ const TeamPerformancePage = () => {
                 </div>
                 <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Perlu Pembinaan</span>
               </div>
-              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={coachingMembers.length} />
               </h3>
               <div className="flex items-center mt-5">
@@ -429,11 +429,11 @@ const TeamPerformancePage = () => {
                       src={member.avatar}
                       alt={member.name}
                       title={member.name}
-                      className="w-10 h-10 rounded-full ring-4 ring-white dark:ring-gray-900 object-cover hover:scale-110 transition-transform relative z-20"
+                      className="w-8 h-8 rounded-full ring-4 ring-white dark:ring-gray-900 object-cover hover:scale-110 transition-transform relative z-20"
                     />
                   ))}
                   {coachingMembers.length > 4 && (
-                    <span className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 ring-4 ring-white dark:ring-gray-900 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 relative z-10">
+                    <span className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 ring-4 ring-white dark:ring-gray-900 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 relative z-10">
                       +{coachingMembers.length - 4}
                     </span>
                   )}
@@ -444,16 +444,16 @@ const TeamPerformancePage = () => {
         </StaggerItem>
       </Stagger>
 
-      <Stagger className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <Stagger className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
         <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
-          <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+          <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2.5 bg-warning-50 dark:bg-warning-500/10 rounded-xl">
                     <FaCrown className="w-6 h-6 text-warning-500 dark:text-warning-400" />
                   </div>
-                  <h2 className="text-xl font-display font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-display font-bold text-gray-900 dark:text-white">
                     Leaderboard Konsistensi
                   </h2>
                 </div>
@@ -466,7 +466,7 @@ const TeamPerformancePage = () => {
               </span>
             </div>
           </div>
-          <div className="p-6">
+          <div className="p-4">
             <Stagger className="space-y-4">
               {periodData.consistencyLeaderboard.slice(0, 5).map((item) => (
                 <StaggerItem
@@ -478,7 +478,7 @@ const TeamPerformancePage = () => {
                       <FaCrown className="absolute -top-3 -right-2 w-5 h-5 text-warning-500 dark:text-warning-400 drop-shadow" />
                     )}
                     <span
-                      className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-base font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
                     >
                       {item.rank}
                     </span>
@@ -498,14 +498,14 @@ const TeamPerformancePage = () => {
         </StaggerItem>
 
         <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
-          <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+          <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2.5 bg-primary-50 dark:bg-primary-500/10 rounded-xl">
                     <FaStar className="w-6 h-6 text-primary-500 dark:text-primary-400" />
                   </div>
-                  <h2 className="text-xl font-display font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-display font-bold text-gray-900 dark:text-white">
                     Leaderboard Kualitas Insight
                   </h2>
                 </div>
@@ -518,7 +518,7 @@ const TeamPerformancePage = () => {
               </span>
             </div>
           </div>
-          <div className="p-6">
+          <div className="p-4">
             <Stagger className="space-y-4">
               {periodData.qualityLeaderboard.slice(0, 5).map((item) => (
                 <StaggerItem
@@ -527,7 +527,7 @@ const TeamPerformancePage = () => {
                 >
                   <div className="relative shrink-0">
                     <span
-                      className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-base font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
                     >
                       {item.rank}
                     </span>
@@ -550,10 +550,10 @@ const TeamPerformancePage = () => {
       </Stagger>
 
       <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
-        <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+        <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
             <div>
-              <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="text-base font-display font-bold text-gray-900 dark:text-white mb-2">
                 Anggota Tim
               </h2>
               <p className="text-base text-gray-500 dark:text-gray-400">
@@ -630,7 +630,7 @@ const TeamPerformancePage = () => {
                     {sortableColumns.map((column) => (
                       <th
                         key={column.key}
-                        className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap"
+                        className="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap"
                       >
                         <button
                           type="button"
@@ -642,13 +642,13 @@ const TeamPerformancePage = () => {
                         </button>
                       </th>
                     ))}
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
+                    <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
+                    <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
                       Tren
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
+                    <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider whitespace-nowrap">
                       Aksi
                     </th>
                   </tr>
@@ -660,12 +660,12 @@ const TeamPerformancePage = () => {
                       variants={fadeUpItem}
                       className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                     >
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-2.5">
                         <div className="flex items-center gap-3">
                           <img
                             src={member.avatar}
                             alt={member.name}
-                            className="w-10 h-10 rounded-xl object-cover shrink-0"
+                            className="w-8 h-8 rounded-xl object-cover shrink-0"
                           />
                           <div className="min-w-0">
                             <p className="font-medium text-gray-900 dark:text-white truncate">
@@ -677,15 +677,15 @@ const TeamPerformancePage = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                      <td className="px-4 py-2.5">
+                        <div className="text-base font-semibold text-gray-900 dark:text-white">
                           {member.visits}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400">kunjungan</div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-2.5">
                         <div
-                          className={`text-lg font-semibold ${getScoreColor(member.avgQualityScore)}`}
+                          className={`text-base font-semibold ${getScoreColor(member.avgQualityScore)}`}
                         >
                           {member.avgQualityScore.toFixed(1)}
                         </div>
@@ -696,15 +696,15 @@ const TeamPerformancePage = () => {
                           />
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                      <td className="px-4 py-2.5">
+                        <div className="text-base font-semibold text-gray-900 dark:text-white">
                           {member.streak}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400">
                           terakhir: {formatShortDate(member.lastActivity)}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-2.5">
                         <div className="space-y-2">
                           <StatusBadge status={member.status} />
                           {member.coachingNeeded && (
@@ -714,10 +714,10 @@ const TeamPerformancePage = () => {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-2.5">
                         <TrendIndicator trend={member.performanceTrend} />
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-2.5">
                         <button
                           type="button"
                           onClick={() => openDetail(member)}
@@ -733,7 +733,7 @@ const TeamPerformancePage = () => {
               </table>
             </Stagger>
 
-            <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+            <div className="px-4 py-2.5 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500 dark:text-gray-400">
                 <p>
                   Menampilkan{' '}
@@ -832,14 +832,14 @@ const TeamPerformancePage = () => {
       >
         {detailMember && (
           <div>
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-4">
               <img
                 src={detailMember.avatar}
                 alt={detailMember.name}
-                className="w-16 h-16 rounded-2xl object-cover shrink-0"
+                className="w-16 h-14 rounded-2xl object-cover shrink-0"
               />
               <div className="min-w-0">
-                <h3 className="text-lg font-display font-semibold text-gray-900 dark:text-white truncate">
+                <h3 className="text-base font-display font-semibold text-gray-900 dark:text-white truncate">
                   {detailMember.name}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">{detailMember.position}</p>

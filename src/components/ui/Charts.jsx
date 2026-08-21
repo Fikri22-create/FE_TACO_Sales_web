@@ -184,7 +184,7 @@ export const LineChart = ({
                 strokeLinejoin="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.2, delay: si * 0.15, ease: 'easeInOut' }}
+                transition={{ duration: 1.2, delay: si * 0.15, ease: [0.16, 1, 0.3, 1] }}
               />
               {pts.map((p, i) => (
                 <motion.circle
@@ -306,7 +306,7 @@ export const BarChart = ({
                 fill={s.color}
                 initial={{ y: y1, height: 0 }}
                 animate={{ y, height: barH }}
-                transition={{ type: 'spring', stiffness: 220, damping: 22, delay: (gi * slotCount + si) * 0.05 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: (gi * slotCount + si) * 0.05 }}
                 className="cursor-pointer transition-[filter] duration-150 hover:brightness-110"
               >
                 <title>{`${s.name}: ${valueFormatter(val)}`}</title>

@@ -17,6 +17,7 @@ let toastSequence = 0
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([])
   const timersRef = useRef({})
+  const lastToastRef = useRef({ message: '', time: 0 })
 
   const dismiss = useCallback((id) => {
     setToasts((prev) => prev.filter((item) => item.id !== id))
@@ -29,6 +30,12 @@ export const ToastProvider = ({ children }) => {
 
   const push = useCallback(
     (type, message) => {
+      const now = Date.now()
+      if (lastToastRef.current.message === message && now - lastToastRef.current.time < 500) {
+        return 
+      }
+      lastToastRef.current = { message, time: now }
+
       toastSequence += 1
       const id = toastSequence
       setToasts((prev) => [...prev, { id, type, message }])
@@ -73,10 +80,10 @@ const ToastCard = ({ item, onDismiss }) => {
   return (
     <motion.div
       className="pointer-events-auto relative flex items-start gap-3 overflow-hidden rounded-xl border border-gray-200 bg-white p-4 pl-5 shadow-lg dark:border-gray-700 dark:bg-gray-900"
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      initial={{ opacity: 0, x: 80, scale: 0.95 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      exit={{ opacity: 0, x: 80, scale: 0.95 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 24 }}
     >
       <span className={`absolute inset-y-0 left-0 w-1 ${visual.barClass}`} />
       <Icon size={18} className={`mt-0.5 shrink-0 ${visual.iconClass}`} />
