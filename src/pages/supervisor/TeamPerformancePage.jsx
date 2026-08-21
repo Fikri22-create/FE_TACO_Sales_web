@@ -283,87 +283,101 @@ const TeamPerformancePage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-primary-50 dark:bg-primary-500/10 rounded-lg">
-              <FaUsers className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+      {/* Hero/Greeting Section */}
+      <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+          <div className="flex-1">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="p-4 bg-primary-50 dark:bg-primary-500/10 rounded-2xl">
+                <FaUsers className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+              </div>
+              <div>
+                <h1 className="text-3xl lg:text-4xl font-display font-bold text-gray-900 dark:text-white">
+                  Kinerja Tim
+                </h1>
+                <p className="text-gray-500 dark:text-gray-400 mt-2 text-base">
+                  Pantau performa anggota tim, identifikasi kebutuhan pembinaan, dan lacak progres terhadap target.
+                </p>
+              </div>
             </div>
-            <h1 className="text-2xl font-display font-semibold text-gray-900 dark:text-white">
-              Kinerja Tim
-            </h1>
+            <div className="mt-6 flex items-center gap-3">
+            </div>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-            Pantau performa anggota tim, identifikasi kebutuhan pembinaan, dan lacak progres terhadap
-            target.
-          </p>
-        </div>
 
-        <div className="relative shrink-0">
-          <FaCalendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500 pointer-events-none" />
-          <select
-            value={selectedPeriod}
-            onChange={(e) => handlePeriodChange(e.target.value)}
-            aria-label="Pilih periode"
-            className="appearance-none pl-10 pr-9 py-2.5 bg-gray-100/70 dark:bg-gray-800/60 border border-transparent rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm transition-all duration-200 cursor-pointer hover:bg-white dark:hover:bg-gray-700 focus:bg-white dark:focus:bg-gray-800 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:shadow-md [&>option]:bg-white dark:[&>option]:bg-gray-800 [&>option]:text-gray-900 dark:[&>option]:text-gray-100"
-          >
-            {periodOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400 dark:text-gray-500 pointer-events-none" />
+          <div className="relative shrink-0">
+
+            <select
+              value={selectedPeriod}
+              onChange={(e) => handlePeriodChange(e.target.value)}
+              aria-label="Pilih periode"
+              className="appearance-none pl-10 pr-9 py-2.5 bg-gray-100/70 dark:bg-gray-800/60 border border-transparent rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm transition-all duration-200 cursor-pointer hover:bg-white dark:hover:bg-gray-700 focus:bg-white dark:focus:bg-gray-800 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:shadow-md [&>option]:bg-white dark:[&>option]:bg-gray-800 [&>option]:text-gray-900 dark:[&>option]:text-gray-100"
+            >
+              {periodOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400 dark:text-gray-500 pointer-events-none" />
+          </div>
         </div>
       </div>
 
-      <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 hover:shadow-md transition-all duration-300">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Total Anggota</p>
-              <h3 className="text-3xl font-display font-semibold text-gray-900 dark:text-white mb-1">
+      {/* Stat Cards Section */}
+      <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-primary-100 dark:bg-primary-500/20 rounded-2xl">
+                  <FaUserCheck className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                </div>
+                <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Anggota</span>
+              </div>
+              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={summary.totalTeamMembers} />
               </h3>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 mt-4">
                 <span className="w-2 h-2 rounded-full bg-success-500" />
-                <span className="text-sm text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                   {summary.activeToday} aktif hari ini
                 </span>
               </div>
             </div>
-            <div className="p-3 bg-primary-50 dark:bg-primary-500/10 rounded-xl shrink-0">
-              <FaUserCheck className="w-7 h-7 text-primary-600 dark:text-primary-400" />
-            </div>
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 hover:shadow-md transition-all duration-300">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Rata-rata Skor Kualitas</p>
-              <h3 className={`text-3xl font-display font-semibold mb-1 ${getScoreColor(summary.avgQualityScore)}`}>
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-secondary-100 dark:bg-secondary-500/20 rounded-2xl">
+                  <FaChartLine className="w-5 h-5 text-secondary-600 dark:text-secondary-400" />
+                </div>
+                <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Skor Kualitas</span>
+              </div>
+              <h3 className={`text-3xl font-display font-bold mb-2 ${getScoreColor(summary.avgQualityScore)}`}>
                 <CountUp
                   value={summary.avgQualityScore}
                   format={(n) => n.toFixed(2)}
                   duration={1000}
                 />
               </h3>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span className="text-sm text-gray-500 dark:text-gray-400">Target: 1.8</span>
+              <div className="flex items-center justify-between mt-5">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Target: 1.8</span>
                 <span
-                  className={`text-sm font-medium ${
+                  className={`text-xs font-bold px-3 py-1.5 rounded-xl ${
                     onTrack
-                      ? 'text-success-600 dark:text-success-400'
-                      : 'text-error-600 dark:text-error-400'
+                      ? 'bg-success-50 text-success-700 dark:bg-success-500/20 dark:text-success-400'
+                      : 'bg-error-50 text-error-700 dark:bg-error-500/20 dark:text-error-400'
                   }`}
                 >
-                  {onTrack ? 'On Track' : 'Perlu Ditingkatkan'}
+                  {onTrack ? 'On Track ✓' : 'Perlu Tingkatkan'}
                 </span>
               </div>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-5">
             <div className="h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
               <motion.div
                 className="h-full rounded-full bg-gradient-to-r from-primary-500 to-secondary-500"
@@ -376,64 +390,70 @@ const TeamPerformancePage = () => {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 hover:shadow-md transition-all duration-300">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Total Kunjungan</p>
-              <h3 className="text-3xl font-display font-semibold text-gray-900 dark:text-white mb-1">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-warm-100 dark:bg-warm-500/20 rounded-2xl">
+                  <FaCalendarAlt className="w-5 h-5 text-warm-700 dark:text-warm-500" />
+                </div>
+                <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Kunjungan</span>
+              </div>
+              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={summary.totalVisits} />
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">
                 Rata-rata {summary.avgVisitsPerMember.toFixed(1)} per anggota
               </p>
-            </div>
-            <div className="p-3 bg-secondary-50 dark:bg-secondary-500/10 rounded-xl shrink-0">
-              <FaChartLine className="w-7 h-7 text-secondary-600 dark:text-secondary-400" />
             </div>
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6 hover:shadow-md transition-all duration-300">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Perlu Pembinaan</p>
-              <h3 className="text-3xl font-display font-semibold text-gray-900 dark:text-white mb-1">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 group">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-red-100 dark:bg-red-500/20 rounded-2xl">
+                  <FaUserTimes className="w-5 h-5 text-red-600 dark:text-red-400" />
+                </div>
+                <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Perlu Pembinaan</span>
+              </div>
+              <h3 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">
                 <CountUp value={coachingMembers.length} />
               </h3>
-              <div className="flex items-center mt-2">
-                <div className="flex -space-x-2">
+              <div className="flex items-center mt-5">
+                <div className="flex -space-x-3">
                   {coachingMembers.slice(0, 4).map((member) => (
                     <img
                       key={member.id}
                       src={member.avatar}
                       alt={member.name}
                       title={member.name}
-                      className="w-8 h-8 rounded-full ring-2 ring-white dark:ring-gray-900 object-cover"
+                      className="w-10 h-10 rounded-full ring-4 ring-white dark:ring-gray-900 object-cover hover:scale-110 transition-transform relative z-20"
                     />
                   ))}
                   {coachingMembers.length > 4 && (
-                    <span className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 ring-2 ring-white dark:ring-gray-900 flex items-center justify-center text-xs font-medium text-gray-600 dark:text-gray-300">
+                    <span className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 ring-4 ring-white dark:ring-gray-900 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 relative z-10">
                       +{coachingMembers.length - 4}
                     </span>
                   )}
                 </div>
               </div>
             </div>
-            <div className="p-3 bg-warm-50 dark:bg-warm-500/10 rounded-xl shrink-0">
-              <FaUserTimes className="w-7 h-7 text-warm-700 dark:text-warm-400" />
-            </div>
           </div>
         </StaggerItem>
       </Stagger>
 
-      <Stagger className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
-            <div className="flex items-center justify-between gap-3">
+      <Stagger className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
+          <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+            <div className="flex items-center justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <FaCrown className="w-5 h-5 text-warning-500 dark:text-warning-400" />
-                  <h2 className="text-lg font-display font-semibold text-gray-900 dark:text-white">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2.5 bg-warning-50 dark:bg-warning-500/10 rounded-xl">
+                    <FaCrown className="w-6 h-6 text-warning-500 dark:text-warning-400" />
+                  </div>
+                  <h2 className="text-xl font-display font-bold text-gray-900 dark:text-white">
                     Leaderboard Konsistensi
                   </h2>
                 </div>
@@ -441,33 +461,33 @@ const TeamPerformancePage = () => {
                   Posisi teratas berdasarkan streak aktivitas
                 </p>
               </div>
-              <span className="shrink-0 px-3 py-1 bg-warm-50 dark:bg-warm-500/10 text-warm-700 dark:text-warm-300 text-xs font-medium rounded-full">
+              <span className="shrink-0 px-4 py-2 bg-warm-50 dark:bg-warm-500/10 text-warm-700 dark:text-warm-300 text-xs font-bold rounded-xl">
                 {periodLabel}
               </span>
             </div>
           </div>
-          <div className="p-4">
-            <Stagger className="space-y-3">
+          <div className="p-6">
+            <Stagger className="space-y-4">
               {periodData.consistencyLeaderboard.slice(0, 5).map((item) => (
                 <StaggerItem
                   key={item.id}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                  className="flex items-center gap-5 p-5 rounded-2xl bg-gray-50/50 dark:bg-gray-800/30 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:bg-white dark:hover:bg-gray-800 transition-all shadow-sm"
                 >
                   <div className="relative shrink-0">
                     {item.rank === 1 && (
-                      <FaCrown className="absolute -top-2 -right-2 w-4 h-4 text-warning-500 dark:text-warning-400" />
+                      <FaCrown className="absolute -top-3 -right-2 w-5 h-5 text-warning-500 dark:text-warning-400 drop-shadow" />
                     )}
                     <span
-                      className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white ${getRankBadgeClass(item.rank)}`}
+                      className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
                     >
                       {item.rank}
                     </span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-900 dark:text-white truncate">{item.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-base font-bold text-gray-900 dark:text-white truncate">{item.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                       Skor:{' '}
-                      <span className="font-medium text-gray-900 dark:text-white">{item.score}</span>
+                      <span className="font-bold text-gray-900 dark:text-white">{item.score}</span>
                     </p>
                   </div>
                   <DeltaBadge item={item} />
@@ -477,13 +497,15 @@ const TeamPerformancePage = () => {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
-            <div className="flex items-center justify-between gap-3">
+        <StaggerItem className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
+          <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+            <div className="flex items-center justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <FaStar className="w-5 h-5 text-primary-500 dark:text-primary-400" />
-                  <h2 className="text-lg font-display font-semibold text-gray-900 dark:text-white">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2.5 bg-primary-50 dark:bg-primary-500/10 rounded-xl">
+                    <FaStar className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+                  </div>
+                  <h2 className="text-xl font-display font-bold text-gray-900 dark:text-white">
                     Leaderboard Kualitas Insight
                   </h2>
                 </div>
@@ -491,28 +513,30 @@ const TeamPerformancePage = () => {
                   Posisi teratas berdasarkan skor kualitas rata-rata
                 </p>
               </div>
-              <span className="shrink-0 px-3 py-1 bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-xs font-medium rounded-full">
+              <span className="shrink-0 px-4 py-2 bg-primary-50 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300 text-xs font-bold rounded-xl">
                 {periodLabel}
               </span>
             </div>
           </div>
-          <div className="p-4">
-            <Stagger className="space-y-3">
+          <div className="p-6">
+            <Stagger className="space-y-4">
               {periodData.qualityLeaderboard.slice(0, 5).map((item) => (
                 <StaggerItem
                   key={item.id}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                  className="flex items-center gap-5 p-5 rounded-2xl bg-gray-50/50 dark:bg-gray-800/30 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:bg-white dark:hover:bg-gray-800 transition-all shadow-sm"
                 >
-                  <span
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white ${getRankBadgeClass(item.rank)}`}
-                  >
-                    {item.rank}
-                  </span>
+                  <div className="relative shrink-0">
+                    <span
+                      className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-sm ${getRankBadgeClass(item.rank)}`}
+                    >
+                      {item.rank}
+                    </span>
+                  </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-900 dark:text-white truncate">{item.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-base font-bold text-gray-900 dark:text-white truncate">{item.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                       Skor:{' '}
-                      <span className={`font-medium ${getScoreColor(item.score)}`}>
+                      <span className={`font-bold ${getScoreColor(item.score)}`}>
                         {item.score.toFixed(1)}
                       </span>
                     </p>
@@ -525,14 +549,14 @@ const TeamPerformancePage = () => {
         </StaggerItem>
       </Stagger>
 
-      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-        <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm">
+        <div className="px-8 py-6 border-b border-gray-100 dark:border-gray-800">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div>
-              <h2 className="text-lg font-display font-semibold text-gray-900 dark:text-white mb-1">
+              <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">
                 Anggota Tim
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-base text-gray-500 dark:text-gray-400">
                 Metrik performa detail untuk seluruh anggota tim
               </p>
             </div>

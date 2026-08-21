@@ -56,7 +56,7 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={toast}>
       {children}
-      <div className="pointer-events-none fixed right-4 top-4 z-[110] flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-3">
+      <div className="pointer-events-none fixed right-4 bottom-4 z-[110] flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-3">
         <AnimatePresence>
           {toasts.map((item) => (
             <ToastCard key={item.id} item={item} onDismiss={dismiss} />
@@ -73,10 +73,10 @@ const ToastCard = ({ item, onDismiss }) => {
   return (
     <motion.div
       className="pointer-events-auto relative flex items-start gap-3 overflow-hidden rounded-xl border border-gray-200 bg-white p-4 pl-5 shadow-lg dark:border-gray-700 dark:bg-gray-900"
-      initial={{ opacity: 0, x: 80 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 80 }}
-      transition={{ type: 'spring', stiffness: 320, damping: 26 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
     >
       <span className={`absolute inset-y-0 left-0 w-1 ${visual.barClass}`} />
       <Icon size={18} className={`mt-0.5 shrink-0 ${visual.iconClass}`} />

@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaUserCircle, FaCamera, FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useAuth } from '../../contexts/AuthContext'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useToast } from '../../components/ui/Toast'
 
-const AVATAR_COLORS = ['ff4c00', '953d1f', 'dac690', '10b981', '8b5cf6', 'ec4899']
+const AVATAR_COLORS = ['ff4c00', '953d1f', 'dac690', '3b82f6', '10b981', 'f59e0b']
 
 const DEFAULT_PREFS = { dateFormat: 'DD/MM/YYYY', language: 'id' }
 
@@ -38,15 +38,25 @@ const ProfilePage = () => {
 
   const fileInputRef = useRef(null)
 
-  const [name, setName] = useState(user?.name || '')
-  const [email, setEmail] = useState(user?.email || '')
+  const [loading, setLoading] = useState(true)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [selectedAvatar, setSelectedAvatar] = useState(
-    user?.avatar || avatarUrl(user?.name || 'Supervisor', 'ff4c00'),
-  )
+  const [selectedAvatar, setSelectedAvatar] = useState('')
   const [prefs, setPrefs] = useState(readPrefs)
   const [formError, setFormError] = useState('')
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name || '')
+      setEmail(user.email || '')
+      setSelectedAvatar(user.avatar || avatarUrl(user.name || 'Supervisor', 'ff4c00'))
+      setLoading(false)
+    } else {
+      setLoading(false)
+    }
+  }, [user])
 
   const isDark = theme === 'dark'
 
@@ -87,6 +97,10 @@ const ProfilePage = () => {
       setFormError('Nama tidak boleh kosong.')
       return
     }
+    if (!trimmedEmail) {
+      setFormError('Email tidak boleh kosong.')
+      return
+    }
     if (!EMAIL_REGEX.test(trimmedEmail)) {
       setFormError('Format email tidak valid.')
       return
@@ -96,7 +110,11 @@ const ProfilePage = () => {
       return
     }
 
-    const updates = { name: trimmedName, email: trimmedEmail, avatar: selectedAvatar }
+    const updates = { 
+      name: trimmedName, 
+      email: trimmedEmail, 
+      avatar: selectedAvatar || avatarUrl(trimmedName, 'ff4c00') 
+    }
     if (password) {
       updates.password = password
     }
@@ -106,6 +124,21 @@ const ProfilePage = () => {
     setPassword('')
     toast.success('Profil berhasil diperbarui')
   }
+
+  if (loading) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <div className="text-center">
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-500/20">
+            <FaUserCircle className="h-6 w-6 text-primary-500" />
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Memuat profil...</p>
+        </div>
+      </div>
+    )
+  }
+
+  const displayName = name || user?.name || 'Supervisor'
 
   return (
     <div className="space-y-6">
@@ -131,11 +164,20 @@ const ProfilePage = () => {
           </h2>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-            <img
-              src={selectedAvatar}
-              alt={name || 'Supervisor'}
-              className="h-24 w-24 rounded-xl object-cover shadow-lg shrink-0"
-            />
+            {selectedAvatar ? (
+              <img
+                src={selectedAvatar}
+                alt={displayName}
+                className="h-24 w-24 rounded-xl object-cover shadow-lg shrink-0"
+                onError={(e) => {
+                  e.target.src = avatarUrl(displayName, 'ff4c00')
+                }}
+              />
+            ) : (
+              <div className="h-24 w-24 rounded-xl bg-primary-100 dark:bg-primary-500/20 flex items-center justify-center shadow-lg shrink-0">
+                <FaUserCircle className="h-12 w-12 text-primary-500" />
+              </div>
+            )}
             <div className="flex-1 min-w-0">
               <button
                 type="button"
@@ -165,7 +207,7 @@ const ProfilePage = () => {
             </p>
             <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
               {AVATAR_COLORS.map((color) => {
-                const url = avatarUrl(name.trim() || user?.name || 'Supervisor', color)
+                const url = avatarUrl(displayName, color)
                 const isSelected = selectedAvatar === url
                 return (
                   <button
@@ -182,7 +224,14 @@ const ProfilePage = () => {
                         : 'ring-1 ring-gray-200 hover:ring-gray-300 dark:ring-gray-700 dark:hover:ring-gray-600'
                     }`}
                   >
-                    <img src={url} alt="" className="h-10 w-10 object-cover" />
+                    <img 
+                      src={url} 
+                      alt="" 
+                      className="h-10 w-10 object-cover"
+                      onError={(e) => {
+                        e.target.src = avatarUrl(displayName, 'ff4c00')
+                      }}
+                    />
                   </button>
                 )
               })}

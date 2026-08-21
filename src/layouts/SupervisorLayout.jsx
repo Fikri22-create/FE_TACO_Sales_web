@@ -9,7 +9,6 @@ import {
   FaChartLine,
   FaChevronLeft,
   FaChevronRight,
-  FaCog,
   FaSignOutAlt,
   FaUserCircle,
   FaUsers,
@@ -185,8 +184,7 @@ const LayoutShell = () => {
                 Sales Intelligence Dashboard
               </h1>
               <div className="mt-0.5 flex items-center gap-2">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-success-500 animate-pulse-smooth" />
-                <span className="truncate text-xs text-gray-500 dark:text-gray-400">Data real-time • Auto-refresh aktif</span>
+                
               </div>
             </div>
           </div>
